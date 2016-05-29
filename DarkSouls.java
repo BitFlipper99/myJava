@@ -1,6 +1,11 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
+/*
+ *
+ * Attempting to make a text-based graphical game using concepts from Dark Souls.
+ *
+ */
 public class DarkSouls{
    //public static void clear(){System.out.print("\033[H\033[2J");} //end method
    
