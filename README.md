@@ -1,2 +1,3 @@
-# myJava
-For Java projects.
+# Dark Souls
+For a school project.
+
