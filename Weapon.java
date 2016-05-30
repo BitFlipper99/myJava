@@ -12,12 +12,12 @@ public class Weapon{
    private int weight;
    private String[] icon;
 
-   public Weapon(String Aname, int Apdam, int Amdam, int Aweight, String[] Aicon){
-      name=Aname;
-      pdam=Apdam;
-      mdam=Amdam;
-      weight=Aweight;
-      icon=Aicon;
+   public Weapon(String name, int pdam, int mdam, int weight, String[] icon){
+      this.name = name;
+      this.pdam = pdam;
+      this.mdam = mdam;
+      this.weight = weight;
+      this.icon = icon;
    } // end constructor
    public String name(){return name;}
    public int mdam(){return mdam;}
