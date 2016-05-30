@@ -8,20 +8,31 @@ public class Armor{
    private String slot;
    private String[] icon;
    
-   public Armor(String Aname, String Aslot, int Amres, int Apres, int Aweight, String[] Aicon){
-      name=Aname;
-      slot=Aslot;
-      mres=Amres;
-      pres=Apres;
-      weight=Aweight;
-      icon=Aicon;
+   public Armor(String name, String slot, int mres, int pres, int weight, String[] icon){
+      this.name = name;
+      this.slot = slot;
+      this.mres = mres;
+      this.pres = pres;
+      this.weight = weight;
+      this.icon = icon;
    } // end constructor
+   
+   // Getters
    public String name(){return name;}
    public String slot(){return slot;}
    public int mres(){return mres;}
    public int pres(){return pres;}
    public int weight(){return weight;}
    public String[] icon(){return icon;}
+   
+   // Setters
+   public void setName(String name) { this.name = name; }
+   public void setMres(int mres) { this.mres = mres; }
+   public void setPres(int pres) { this.pres = pres; }
+   public void setWeight(int weight) { this.weight = weight; }
+   public void setSlot(String slot) { this.slot = slot; }
+   public void setIcon(String[] icon) {this.icon = icon; }
+   
    
    static String[] featherheadicon ={"       /\\        ",       
 	 "      //\\\\      ",      

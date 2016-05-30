@@ -9,6 +9,9 @@ import java.util.Arrays;
 public class DarkSouls{
    //public static void clear(){System.out.print("\033[H\033[2J");} //end method
    
+   private static final String[] MAPS = {"Shrine","Logan's Castle","Bone Zone","Spooky Cathedral","Dark Swampy Place","The Meme Dimension"};
+   private static int progression = 2;
+   
    public static void printbattle(Human player, Human enemy){
       String spaces = "                                                                                             ";
       String[] ph = player.gethelm().icon();
@@ -62,16 +65,34 @@ public class DarkSouls{
          Thread.currentThread().interrupt();}
    } // end method
    
-   public static void travel(String destination){
+   public static void travel(int destination){
       String[] figurine = {"     k\n  O  |\n()Y==o\n /_\\ |\n _W_ |\n"," o\n|\\O   )\n \\Y==d\n /_\\\n / >\n"," 0   \\0\n/0--- :\\\n/ >  / >\n"};
-      System.out.println("Traveling to "+destination);
+      System.out.println("Traveling to " + MAPS[destination]);
       for (int i = 0; i < 3; i++){
          sleep(0.5);
          System.out.println(figurine[i]);
       } // end for loop
-      System.out.println("Arrived at: "+destination);
+      System.out.println("Arrived at: " + MAPS[destination]);
       sleep(0.4);
-   } //end method
+      
+      switch (destination) {
+         case 0:
+            // 0 enters here
+            Shrine();
+            break;
+         case 1:
+         case 2:
+         case 3:
+         case 4:
+         case 5:
+            // 1-5 enter here
+            progression = battle(destination, progression);
+            break;
+         default:
+            System.out.println("Something went wrong.");
+            break;
+      }
+   } // end method
    
    public static String[] options(String[] buttons){
       String spaces="                          ";
@@ -84,16 +105,16 @@ public class DarkSouls{
          finals[1]+=" |"+(i+1)+fix.substring(0, fix.length()/2)+buttons[i]+fix.substring(fix.length()/2)+(i+1)+"|";
          finals[2]+=spaces.substring(0,in)+"  ¯¯¯¯¯¯¯¯¯¯¯¯";
          in=1;
-      } //end for
+      } // end for
       return finals;
-   } //end class
+   } // end class
    public static String arrtostr(String[] strarr){
       String newstring = "";
       for (String s: strarr){
          newstring+=s+"\n";
-      } //end for loop
+      } // end for loop
       return newstring;
-   } //end method
+   } // end method
    
    public static int mapchoice(int progression){
       int choice=-1;
@@ -112,7 +133,7 @@ public class DarkSouls{
                           map[24]+="  /       \\/";
                           map[25]+="  | Shrine|";
                           map[26]+="  \\_______/";
-                          } //end if
+                          } // end if
       if (progression>=2){map[7]+="    _|__";
                           map[8]+="   /    \\";
                           map[9]+="   |Bone|____________";
@@ -124,7 +145,7 @@ public class DarkSouls{
                           map[15]+="      /";
                           map[16]+="    /";
                           map[17]+="___/";
-                          } //end if
+                          } // end if
       if (progression>=3){map[0]+="         ________";
                           map[1]+="        /        \\";
                           map[2]+="       /      ___|_____";
@@ -132,7 +153,7 @@ public class DarkSouls{
                           map[4]+="     /       |Cathedral|";
                           map[5]+="     |       \\_________/ 3.";
                           map[6]+="     |";
-                          } //end if
+                          } // end if
       if (progression>=4){map[6]+="           |";
                           map[7]+="         \\___________";
                           map[8]+="                    \\";
@@ -143,7 +164,7 @@ public class DarkSouls{
                           map[13]+="      \\___|Swampy|";
                           map[14]+="          \\Place /";
                           map[15]+="            \\____/ 4.";
-                          } //end if
+                          } // end if
       if (progression>=5){map[10]+="                      ___ ___ ___        ___ ___ ___";
                           map[11]+="            | | | | | |        | | | | | |";
                           map[12]+="           | |_| |_| |        | |_| |_| |";
@@ -161,41 +182,41 @@ public class DarkSouls{
                           map[24]+="                          |                |       | Dimension|       |";
                           map[25]+="                           \\________________|       |    5.    |       |";
                           map[26]+="                                            |       |          |       |";
-                          } //end if
+                          } // end if
       System.out.println(arrtostr(map));
       while (choice>progression || choice<0){
          if (s.hasNextInt()){
             choice=s.nextInt();
-         } //end if
+         } // end if
          else{System.out.println("Please select a level");
               s.nextLine();}
-      } //end while
+      } // end while
       return choice;
-   } //end method
+   } // end method
    
    public static void Shrine(){
    
    
-   } //end method
+   } // end method
+   
+   public static void printSpaces(int spaces) {
+      for (int i = 0; i < spaces; i++) System.out.print(" ");
+   } // end method
    
    public static int battle(int area, int progression){
       
       return progression;
-   } //end method
+   } // end method
    
    public static int[] rungame(int[] profile){
-      int mchoice=0;
-      int progression=5;
-      String[] maps = {"Shrine","Logan's Castle","Bone Zone","Spooky Cathedral","Dark Swampy Place","The Meme Dimension"};
-      mchoice=mapchoice(progression);
-      travel(maps[mchoice]);
-      if (mchoice==0){Shrine();}
-      else{progression = battle(mchoice, progression);}
+      int mchoice = 0;
+      mchoice = mapchoice(progression);
+      travel(mchoice);
       return profile;
-   } //end method
+   } // end method
    
    public static void main(String[] Args){
-      int choice=3;
+      int choice = 3;
       int[] profile = new int[6];
       Scanner s = new Scanner(System.in);
       System.out.println("Welcome to Dark Souls!\nPrepare to die!");
@@ -205,21 +226,29 @@ public class DarkSouls{
       Human player = new Human(Armor.knighthelm, Armor.sunbrochest, Armor.polishedgreaves, Weapon.flamingsword);
       Human enemy = new Human();
       printbattle(player, enemy);
+      
+      while (!s.hasNextInt()) {
+         if (s.hasNextLine()) {
+            System.out.println("Invalid input!");
+            s.nextLine();
+         }
+      }
+      
       if (s.hasNextInt()){
          choice=s.nextInt();
          if (choice==1){
            profile=rungame(profile);
          
-         } //new game
+         } // new game
          else if (choice==2){
          
          
-         } //Continue
+         } // Continue
          else if (choice==3){
             System.exit(0);
-         } //Quit
+         } // Quit
          System.out.println("Save Here");
-      } //end if
+      } // end if
 
 
 
