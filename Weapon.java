@@ -1,5 +1,10 @@
 import javax.swing.*;
 
+/*
+ *
+ * Class for Weapon Objects.
+ *
+ */
 public class Weapon{
    private String name;
    private int pdam;
