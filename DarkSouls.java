@@ -292,7 +292,11 @@ public class DarkSouls{
       Human player = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.legendarysword);
       Human player2 = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.slingshot);
       Human enemy = new Human();
+<<<<<<< HEAD
       printbattle(enemy, player2);
+=======
+      printbattle(player, enemy);
+>>>>>>> 5e2b9ce15e52c51c9a4850dfdf29d0016bd12017
       
       while (!s.hasNextInt()) {
          if (s.hasNextLine()) {
