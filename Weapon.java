@@ -113,7 +113,7 @@ public class Weapon{
       "         I ; I         ",
       "         I ; I         ",
       "         I ; I         ",
-      "         d | b	      ",
+      "         d | b         ",
       "         H | H         ",
       "         H | H         ",
       "         H I H         ",
@@ -129,7 +129,7 @@ public class Weapon{
       "         d8@8b         ",
       "         O8@8O         ",
       "         T808T         ",
-      "          `~` 	      "};
+      "          `~`          "};
       
    static String[] flamingswordicon = {
       "        )         ",

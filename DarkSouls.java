@@ -14,7 +14,7 @@ public class DarkSouls{
    
    public static void printbattle(Human player, Human enemy){
       boolean dofix = false;
-      String spaces = "                                                                                             ";
+      String spaces = "                                                                                                                                                      ";
       String[] ph = player.gethelm().icon();
       String[] pc = player.getchest().icon();
       String[] pl = player.getlegs().icon();
@@ -118,7 +118,9 @@ public class DarkSouls{
       } //end for loop
       
       System.out.print(arrtostr(graphic));
-      System.out.println(
+      
+      System.out.println(spaces.substring(0, (pl[0].length() / 2) - 4) + "Player Health: 100" + spaces.substring(0, (graphic[graphic.length-1].length() - (pl[0].length() + el[0].length() + 6))) + "Enemy Health: 100");
+      
    } //end method
    
    public static void sleep(double seconds){
@@ -267,7 +269,7 @@ public class DarkSouls{
    } // end method
    
    public static int battle(int area, int progression){
-      int php = 100; ehp = 100;
+      int php = 100, ehp = 100;
       
       
       
@@ -292,11 +294,9 @@ public class DarkSouls{
       Human player = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.legendarysword);
       Human player2 = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.slingshot);
       Human enemy = new Human();
-<<<<<<< HEAD
-      printbattle(enemy, player2);
-=======
-      printbattle(player, enemy);
->>>>>>> 5e2b9ce15e52c51c9a4850dfdf29d0016bd12017
+      
+      printbattle(player2, player);
+
       
       while (!s.hasNextInt()) {
          if (s.hasNextLine()) {

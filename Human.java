@@ -13,11 +13,11 @@ public class Human{
       weapon = Weapon.slingshot;
    } //end constructor
    
-   public Human(Armor helm, Armor chest, Armor legs, Weapon wep){
-      helmet = helm;
-      cuirass = chest;
-      leggings = legs;
-      weapon = wep;
+   public Human(Armor helmet, Armor cuirass, Armor leggings, Weapon weapon){
+      this.helmet = helmet;
+      this.cuirass = cuirass;
+      this.leggings = leggings;
+      this.weapon = weapon;
    } //end constructor
    public Armor gethelm(){return helmet;}
    public Armor getchest(){return cuirass;}
