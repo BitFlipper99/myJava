@@ -259,10 +259,28 @@ public class Armor{
    "|/\\/\\|              |/\\/\\|",
    "     |______________|     "};
    
+   static String[] cleanshirticon = {
+    "  /------        ------\\  ",
+    " /       \\______/       \\ ",
+    "/                        \\",
+    "|            o           |",
+    "| 	                     |",
+    "|            o           |",
+    "|    |              |    |",
+    "|    |       o      |    |",
+    "|    |              |    |",
+    "|    |       o      |    |",
+    "|____|              |____|",
+    "     |       o      |     ",
+    "     |              |     ",
+    "     |       o      |     ",
+    "     |______________|     "};
+    
    static Armor tatteredshirt = new Armor("Tattered Shirt","Cuirass",3,9,3,tatteredshirticon); 
    static Armor spikedcuirass = new Armor("Spiked Cuirass","Cuirass",4,21,15,spikedcuirassicon);
    static Armor feathercoat = new Armor("Feather Coat","Cuirass",7,18,10,feathercoaticon);
    static Armor sunbrochest = new Armor("Sunbro Chestplate","Cuirass",10,15,12,sunbrochesticon);
+   static Armor cleanshirt = new Armor("Clean Shirt","Cuirass",7,10,4,cleanshirticon);
    
    static String[] tatteredclothsicon = {
       " __________________ ",
@@ -346,35 +364,64 @@ public class Armor{
       " \\\\////        \\\\\\\\// "};
       
    static String[] polishedgreavesicon = {
-   "__________________",
-   "UUUUUUUUUUUUUUUUUU",
-   "uuuuuuuuuuuuuuuuuu",        
-   "|                |",
-   "|                |",
-   "|                |", 
-   "|       /\\       |",
-   "|      /  \\      |",
-   "|      |  |      |",
-   "|      |  |      |",
-   "|      |  |      |", 
-   "|      |  |      |",
-   "|      |  |      |",
-   "|      |  |      |",
-   "|      |  |      |", 
-   "|______|  |______|",
-   " \\_____/  \\_____/ ",
-   "  |   |    |   |  ", 
-   "  | X |    | X |  ",
-   "  | X |    | x |  ",
-   "  | X |    | X |  ",
-   "  /   /|  |\\   \\  ",
-   " /   /w    W\\   \\ ",
-   "/___/w      W\\___\\",
-   "\\WW|w        W|WW/"};
+      "__________________",
+      "UUUUUUUUUUUUUUUUUU",
+      "uuuuuuuuuuuuuuuuuu",        
+      "|                |",
+      "|                |",
+      "|                |", 
+      "|       /\\       |",
+      "|      /  \\      |",
+      "|      |  |      |",
+      "|      |  |      |",
+      "|      |  |      |", 
+      "|      |  |      |",
+      "|      |  |      |",
+      "|      |  |      |",
+      "|      |  |      |", 
+      "|______|  |______|",
+      " \\_____/  \\_____/ ",
+      "  |   |    |   |  ", 
+      "  | X |    | X |  ",
+      "  | X |    | x |  ",
+      "  | X |    | X |  ",
+      "  /   /|  |\\   \\  ",
+      " /   /w    W\\   \\ ",
+      "/___/w      W\\___\\",
+      "\\WW|w        W|WW/"};
+      
+   static String[] plateleggingsicon = {
+       " ________________ ",
+       " ######(<>)###### ",
+       " ######(<>)###### ",
+       " \\              / ",
+       " \\  \\   \\/   /  / ",
+       " /              \\ ",
+       " |              | ",
+       " |      /\\      | ", 
+       " |     /  \\     | ",
+       " |     |  |     | ", 
+       " |     |  |     | ",
+       " |     |  |     | ",
+       " \\ / \\ /  \\ / \\ / ",
+       " /     \\  /     \\ ", 
+       " | ( ) |  | ( ) | ", 
+       " \\     /  \\     / ", 
+       "  |\\ /|    |\\ /|  ", 
+       "  |   |    |   |  ",
+       "  |___|    |___|  ",
+       "  \\###/    \\###/  ",
+       "  |   |    |   |  ", 
+       "  |   |    |   |  ",
+       "  /   /|  |\\   \\  ",                                
+       " /   //    \\\\   \\ ",
+       "//\\\\\\/      \\///\\\\",
+       "\\\\///        \\\\\\//"};
     
-   static Armor leathergreaves = new Armor("Leather Greaves","Leggings",7,8,6,leathergreavesicon);
-   static Armor jesterpants = new Armor("Jester's Pants","Leggings",5,10,5,jesterpantsicon);
-   static Armor tatteredcloths = new Armor("Tattered Cloths","Leggings",1,6,1,tatteredclothsicon);
-   static Armor polishedgreaves = new Armor("Polished Greaves","Leggings",3,15,8,polishedgreavesicon);   
+   static Armor leathergreaves =  new Armor("Leather Greaves","Leggings",7,8,6,leathergreavesicon);
+   static Armor jesterpants =     new Armor("Jester's Pants","Leggings",5,10,5,jesterpantsicon);
+   static Armor tatteredcloths =  new Armor("Tattered Cloths","Leggings",1,6,1,tatteredclothsicon);
+   static Armor polishedgreaves = new Armor("Polished Greaves","Leggings",3,15,8,polishedgreavesicon);
+   static Armor plateleggings =   new Armor("Plate Leggins","Leggings",5,18,12,plateleggingsicon);
 
 } //end class

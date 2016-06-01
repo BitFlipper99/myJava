@@ -231,14 +231,14 @@ public class Weapon{
       "  | |  ",
       "  \\_/  "};
 
-   static Weapon katana = new Weapon("Katana",10,0,3,katanaicon);
-   static Weapon magpolearm = new Weapon("Magic Polearm",5,5,5,magpolearmicon);
-   static Weapon flail = new Weapon("Flail",14,0,8,flailicon);
-   static Weapon legendarysword = new Weapon("Legendary Sword",20,10,10,legendaryswordicon);
-   static Weapon flamingsword = new Weapon("Flaming Sword",10,10,6,flamingswordicon);
-   static Weapon basicsword = new Weapon("Longsword",6,0,4,basicswordicon);
-   static Weapon mace = new Weapon("Mace",8,0,8,maceicon);
-   static Weapon slingshot = new Weapon("Slingshot",4,0,1,slingshoticon);
-   static Weapon dagger = new Weapon("Dagger",6,0,1,daggericon);
+   static Weapon katana = new Weapon("Katana",10,1,3,katanaicon);
+   static Weapon magpolearm = new Weapon("Magic Polearm",5,5,10,magpolearmicon);
+   static Weapon flail = new Weapon("Flail",14,1,8,flailicon);
+   static Weapon legendarysword = new Weapon("Legendary Sword",15,15,10,legendaryswordicon);
+   static Weapon flamingsword = new Weapon("Flaming Sword",10,10,8,flamingswordicon);
+   static Weapon basicsword = new Weapon("Longsword",6,1,4,basicswordicon);
+   static Weapon mace = new Weapon("Mallet",8,1,10,maceicon);
+   static Weapon slingshot = new Weapon("Slingshot",4,1,2,slingshoticon);
+   static Weapon dagger = new Weapon("Dagger",6,1,2,daggericon);
    
 } //end class
