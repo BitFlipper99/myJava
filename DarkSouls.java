@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 /*
  *
@@ -9,8 +10,65 @@ import java.util.Arrays;
 public class DarkSouls{
    //public static void clear(){System.out.print("\033[H\033[2J");} //end method
    
-   private static final String[] MAPS = {"Shrine","Logan's Castle","Bone Zone","Spooky Cathedral","Dark Swampy Place","The Meme Dimension"};
-   private static int progression = 2;
+   private static Human player = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.legendarysword);
+   private static final String[][] MAPSFONT = {
+  {"  _________.__          .__               ",
+   " /   _____/|  |_________|__| ____   ____  ",
+   " \\_____  \\ |  |  \\_  __ \\  |/    \\_/ __ \\ ",
+   " /        \\|   Y  \\  | \\/  |   |  \\  ___/ ",
+   "/_______  /|___|  /__|  |__|___|  /\\___  >",
+   "        \\/      \\/              \\/     \\/ "},
+
+  {"   __                        _        ___          _   _      ",
+   "  / /  ___   __ _  __ _ _ __( )__    / __\\__ _ ___| |_| | ___ ",
+   " / /  / _ \\ / _` |/ _` | '_ \\/ __|  / /  / _` / __| __| |/ _ \\",
+   "/ /__| (_) | (_| | (_| | | | \\__ \\ / /__| (_| \\__ \\ |_| |  __/",
+   "\\____/\\___/ \\__, |\\__,_|_| |_|___/ \\____/\\__,_|___/\\__|_|\\___|",
+   "            |___/                                             "},
+
+  {" ____                     ______                ",
+   "|  _ \\                   |___  /                ",
+   "| |_) | ___  _ __   ___     / / ___  _ __   ___ ",
+   "|  _ < / _ \\| '_ \\ / _ \\   / / / _ \\| '_ \\ / _ \\",
+   "| |_) | (_) | | | |  __/  / /_| (_) | | | |  __/",
+   "|____/ \\___/|_| |_|\\___| /_____\\___/|_| |_|\\___|"},
+   
+  {"   ______                                               _           ______         _   __                   __                 __   ", 
+   " .' ___  |                                             | |        .' ___  |       / |_[  |                 |  ]               [  |  ", 
+   "/ .'   \\_| _ .--.  .---.  .--./)  .--.   _ .--.  _   __\\_|.--.   / .'   \\_| ,--. `| |-'| |--.  .---.   .--.| |  _ .--.  ,--.   | |  ",
+   "| |   ____[ `/'`\\]/ /__\\\\/ /'`\\;/ .'`\\ \\[ `/'`\\][ \\ [  ] ( (`\\]  | |       `'_\\ : | |  | .-. |/ /__\\\\/ /'`\\' | [ `/'`\\]`'_\\ :  | |  ",
+   "\\ `.___]  || |    | \\__.,\\ \\._//| \\__. | | |     \\ '/ /   `'.'.  \\ `.___.'\\// | |,| |, | | | || \\__.,| \\__/  |  | |    // | |, | |  ",
+   " `._____.'[___]    '.__.'.',__`  '.__.' [___]  [\\_:  /   [\\__) )  `.____ .'\\'-;__/\\__/[___]|__]'.__.' '.__.;__][___]   \\'-;__/[___] ",
+   "                        ( ( __))                \\__.'                                                                               "},
+   
+  {" _______ .-. .-.,---.    ,---.   ,-.      .--.    ,--,  ,-. .-. ",
+   "|__   __|| | | || .-'    | .-.\\  | |     / /\\ \\ .' .')  | |/ /  ",
+   "  )| |   | `-' || `-.    | |-' \\ | |    / /__\\ \\|  |(_) | | /   ",
+   " (_) |   | .-. || .-'    | |--. \\| |    |  __  |\\  \\    | | \\   ",
+   "   | |   | | |)||  `--.  | |`-' /| `--. | |  |)| \\  `-. | |) \\  ",
+   "   `-'   /(  (_)/( __.'  /( `--' |( __.'|_|  (_)  \\____\\|((_)-' ",
+   "        (__)   (__)     (__)     (_)                    (_)     "},
+   
+  {"       __                     ____  _                           _           ",
+   "      / /___ __   ______ _   / __ \\(_)___ ___  ___  ____  _____(_)___  ____ ",
+   " __  / / __ `/ | / / __ `/  / / / / / __ `__ \\/ _ \\/ __ \\/ ___/ / __ \\/ __ \\",
+   "/ /_/ / /_/ /| |/ / /_/ /  / /_/ / / / / / / /  __/ / / (__  ) / /_/ / / / /",
+   "\\____/\\__,_/ |___/\\__,_/  /_____/_/_/ /_/ /_/\\___/_/ /_/____/_/\\____/_/ /_/ "}};
+  
+   private static final String[] MAPS = {"Shrine","Logan's Castle","Bone Zone","Gregory's Cathedral","The Black","Java Dimension"};
+   private static int progression = 5;
+   private static ArrayList<Human> enemies = new ArrayList<Human>();
+   
+   // h c l w
+   
+   protected static void campaign(){
+      enemies.add(new Human(Armor.smallskull, Armor.tatteredshirt, Armor.tatteredcloths, Weapon.dagger)); //level 0
+      enemies.add(new Human(Armor.skull, Armor.feathercoat, Armor.tatteredcloths, Weapon.mace)); //level 1
+      enemies.add(new Human(Armor.featherhead, Armor.feathercoat, Armor.jesterpants, Weapon.magpolearm)); //level 2
+      enemies.add(new Human(Armor.sunbrohelm, Armor.sunbrochest, Armor.polishedgreaves, Weapon.basicsword)); //level 3
+      enemies.add(new Human(Armor.fathelm, Armor.sunbrochest, Armor.leathergreaves, Weapon.katana)); //level 4
+      enemies.add(new Human(Armor.knighthelm, Armor.spikedcuirass, Armor.polishedgreaves, Weapon.flamingsword)); //level 5
+   }
    
    public static void printbattle(Human player, Human enemy){
       boolean dofix = false;
@@ -25,16 +83,13 @@ public class DarkSouls{
       String[] el = enemy.getlegs().icon();
       String[] ew = enemy.getwep().icon();
       
-      for (int j = 0; j < ew.length; j++){System.out.println(ew[j].length());}
       int pheight = ph.length + pc.length + pl.length;
       int eheight = eh.length + ec.length + el.length;
       
       int x = pc[0].length() - pl[0].length();
-      System.out.println(x);
-      String plfix = spaces.substring(0, x/2);
+      String plfix = spaces(x/2);
       int y = pc[0].length() - ph[0].length();
-      System.out.println(y);
-      String phfix = spaces.substring(0, y/2);
+      String phfix = spaces(y/2);
       String[] graphic = new String[70];
       Arrays.fill(graphic, "");
       int i;
@@ -60,17 +115,17 @@ public class DarkSouls{
       } //end for loop
 
       for (lc = (graphic.length - (pheight+1)); lc > -1; lc--){ //ADD PHANTOM HELMET
-         graphic[lc]+=spaces.substring(0, phfix.length() * 2 + ph[0].length() + 1);
+         graphic[lc]+=spaces(phfix.length() * 2 + ph[0].length() + 1);
       } //end for loop
 
       lc = graphic.length-1;
       for (i = (pl.length-2); i > -1; i--){ //FIX LEGGING SPACE
-         graphic[lc]+=spaces.substring(0, (pw[0].length()) +2);
+         graphic[lc]+=spaces(pw[0].length()+1);
          lc--;
       } //end for loop
 
       for (lc = graphic.length - (pl.length + pw.length); lc > -1; lc--){ //FIX ABOVE PWEAPON
-         graphic[lc]+=spaces.substring(0, (pw[0].length() + 1));
+         graphic[lc]+=spaces(pw[0].length() + 1);
       } //end for loop
       
       lc = (graphic.length-pl.length);
@@ -88,14 +143,13 @@ public class DarkSouls{
          lc--;
       } //end for loop
 
-      for (lc = graphic.length-1; lc > (graphic.length - el.length); lc--){graphic[lc] += spaces.substring(0, ew[0].length());} //FIX BELOW WEAPON
-      for (lc = graphic.length - (el.length + ew.length); lc > -1; lc--){graphic[lc] += spaces.substring(0, ew[0].length()+1);} //FIX ABOVE WEAPON
+      for (lc = graphic.length-1; lc > (graphic.length - el.length); lc--){graphic[lc] += spaces(ew[0].length()+1);} //FIX BELOW WEAPON
+      for (lc = graphic.length - (el.length + ew.length); lc > -1; lc--){graphic[lc] += spaces(ew[0].length()+1);} //FIX ABOVE WEAPON
       
       x = ec[0].length() - el[0].length();
-      String elfix = spaces.substring(0, x/2);
+      String elfix = spaces(x/2);
       y = ec[0].length() - eh[0].length();
-      System.out.println(y);
-      String ehfix = spaces.substring(0, y/2);
+      String ehfix = spaces(y/2);
       
       lc = graphic.length-1;
       dofix = (x%2 == 1);
@@ -119,7 +173,7 @@ public class DarkSouls{
       
       System.out.print(arrtostr(graphic));
       
-      System.out.println(spaces.substring(0, (pl[0].length() / 2) - 4) + "Player Health: 100" + spaces.substring(0, (graphic[graphic.length-1].length() - (pl[0].length() + el[0].length() + 6))) + "Enemy Health: 100");
+      System.out.println((spaces((pl[0].length() / 2) - 4)) + "Player Health: 100" + spaces(graphic[graphic.length-1].length() - (pl[0].length() + el[0].length() + 6)) + "Enemy Health: 100");
       
    } //end method
    
@@ -165,10 +219,10 @@ public class DarkSouls{
       String fix="";
       int in=0;
       for (int i=0; i<buttons.length; i++){
-         fix=spaces.substring(0, 10-buttons[i].length());
-         finals[0]+=spaces.substring(0,in)+"  ____________";
+         fix=spaces(10-buttons[i].length());
+         finals[0]+=spaces(in)+"  ____________";
          finals[1]+=" |"+(i+1)+fix.substring(0, fix.length()/2)+buttons[i]+fix.substring(fix.length()/2)+(i+1)+"|";
-         finals[2]+=spaces.substring(0,in)+"  ¯¯¯¯¯¯¯¯¯¯¯¯";
+         finals[2]+=spaces(in)+"  ¯¯¯¯¯¯¯¯¯¯¯¯";
          in=1;
       } // end for
       return finals;
@@ -214,7 +268,7 @@ public class DarkSouls{
       if (progression>=3){map[0]+="         ________";
                           map[1]+="        /        \\";
                           map[2]+="       /      ___|_____";
-                          map[3]+="      /      / Spooky  \\";
+                          map[3]+="      /      /Gregory's\\";
                           map[4]+="     /       |Cathedral|";
                           map[5]+="     |       \\_________/ 3.";
                           map[6]+="     |";
@@ -225,9 +279,9 @@ public class DarkSouls{
                           map[9]+="         \\";
                           map[10]+="         |";
                           map[11]+="        |    ______";
-                          map[12]+="       |   / Dark \\";
-                          map[13]+="      \\___|Swampy|";
-                          map[14]+="          \\Place /";
+                          map[12]+="       |   /      \\";
+                          map[13]+="      \\___|  The |";
+                          map[14]+="          \\ Black/";
                           map[15]+="            \\____/ 4.";
                           } // end if
       if (progression>=5){map[10]+="                      ___ ___ ___        ___ ___ ___";
@@ -242,8 +296,8 @@ public class DarkSouls{
                           map[19]+="                 |                |        __________        |";
                           map[20]+="                         |                |       /          \\       |";
                           map[21]+="                         |                |       |          |       |";
-                          map[22]+="                         |                |       |    The   |       |";
-                          map[23]+="                         |                |       |   Meme   |       |";
+                          map[22]+="                         |                |       |          |       |";
+                          map[23]+="                         |                |       |   Java   |       |";
                           map[24]+="                          |                |       | Dimension|       |";
                           map[25]+="                           \\________________|       |    5.    |       |";
                           map[26]+="                                            |       |          |       |";
@@ -264,11 +318,15 @@ public class DarkSouls{
    
    } // end method
    
-   public static void printSpaces(int spaces) {
-      for (int i = 0; i < spaces; i++) System.out.print(" ");
+   public static String spaces(int spaces) {
+      String str = "";
+      for (int i = 0; i < spaces; i++) str+=" ";
+      return str;
    } // end method
    
    public static int battle(int area, int progression){
+      System.out.println(arrtostr(MAPSFONT[area]));
+      printbattle(player, enemies.get(area));
       int php = 100, ehp = 100;
       
       
@@ -284,18 +342,42 @@ public class DarkSouls{
    } // end method
    
    public static void main(String[] Args){
+      
+      campaign();
       int choice = 3;
       int[] profile = new int[6];
       Scanner s = new Scanner(System.in);
-      System.out.println("Welcome to Dark Souls!\nPrepare to die!");
+      
       String[] firstops = {"New Game","Continue","Quit"};
+      
+      System.out.println( "                             _____\n"
+                          +"             ,             /@@@@@=-\n"
+                          +"             \\\\            @@@@@@@@@@=-\n"
+                          +"              \\\\          _\\@/\\@@@@@=-\n"
+                          +"               \\\\        /_ +\\ \\@@@@@=-\n"
+                          +"         ,      \\\\      (_/   )  \\@@@@=-\n"
+                          +"         \\\\      \\\\     (_____)    \\@@=-\n"
+                          +"         _\\\\_/\\_ _\\\\__  /     \\     ~~\n"
+                          +"   ____,/+-  `/\\\\  { \\_|___(__ )\n"
+                          +"  >             \\\\  )_|/  ___  \\\n"
+                          +"  \\_/--\\___/     \\\\.` / <-q-p-> \\\n"
+                          +"     _//   )      \\(\\/\\ <-d-b-> /___\n"
+                          +"  _____  /         \\/ \\  \\|/  //   \\__\n"
+                          +"  /     \\/          /   \\_____//     \\_\\\n"
+                          +"  | /\\_  |         (_  /______\\\\     |||\n"
+                          +"  | \\_ | |         | \\|   <    \\\\    /||\n"
+                          +"  \\_\\_\\ \\/     ____\\  |____\\    \\)  / ||\n"
+                          +"        /    _/  <____)\\    (      / //\\\\\n"
+                          +"       /   _/           \\    \\    (  \\\\//\n"
+                          +"      (   /              )  / \\    \\  \\/\n"
+                          +"      /  /              /  /   \\    )\n"
+                          +"  ---/  /--------------/  /-----)  /-----\n"
+                          +"   _/__/ Logan souls  /__/      /  /\n"
+                          +"  /__/               /__/     _/__/\n"
+                          +"                             /__/");
+
       System.out.println(arrtostr(options(firstops)));
       
-      Human player = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.legendarysword);
-      Human player2 = new Human(Armor.crown, Armor.sunbrochest, Armor.tatteredcloths, Weapon.slingshot);
-      Human enemy = new Human();
-      
-      printbattle(player2, player);
 
       
       while (!s.hasNextInt()) {
