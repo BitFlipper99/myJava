@@ -5,6 +5,7 @@ public class Human{
    private Armor cuirass;
    private Armor leggings;
    private Weapon weapon;
+   private int weight;
    
    public Human(){
       helmet = Armor.tophat;
@@ -18,7 +19,9 @@ public class Human{
       this.cuirass = cuirass;
       this.leggings = leggings;
       this.weapon = weapon;
+      weight = helmet.weight() + cuirass.weight() + leggings.weight() + weapon.weight();
    } //end constructor
+   
    public Armor gethelm(){return helmet;}
    public Armor getchest(){return cuirass;}
    public Armor getlegs(){return leggings;}
