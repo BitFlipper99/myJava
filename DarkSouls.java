@@ -14,6 +14,7 @@ public class DarkSouls{
    private static boolean playing = true;
    private static int progression = 0;
    private static int titanite = 0;
+   private static int maxhp = 100;
    
    private static Human player = new Human();
    private static final String[][] MAPSFONT = {
@@ -180,7 +181,7 @@ public class DarkSouls{
       
       System.out.print(arrtostr(graphic));
       
-      System.out.println((spaces((pl[0].length() / 2) - 4)) + "Player Health: 100" + spaces(graphic[graphic.length-1].length() - (pl[0].length() + el[0].length() + 6)) + "Enemy Health: 100");
+      System.out.println((spaces((pl[0].length() / 2) - 4)) + "Player Health: "+maxhp + spaces(graphic[graphic.length-1].length() - (pl[0].length() + el[0].length() + 6)) + "Enemy Health: "+maxhp);
       
    } //end method
    
@@ -326,7 +327,7 @@ public class DarkSouls{
       System.out.println(arrtostr(MAPSFONT[area]));
       sleep(1); //lets look at the title for a sec
       printbattle(player, enemies.get(area));
-      int php = 100, ehp = 100, choice, cchoice, rint, rint2;
+      int php = maxhp, ehp = maxhp, choice, cchoice, rint, rint2;
       int[] hpchange = {0,0};
       int[] playerchoices = {6,7,8};
       int tcount = 0;
@@ -587,8 +588,8 @@ public class DarkSouls{
       int[] profile = new int[6];
       Scanner s = new Scanner(System.in);
       
-      String[] firstops = {"New Game","Continue","Quit"};
-      
+      String[] firstops = {"New Game","Continue","Quit","Options"};
+      String[] secops = {"200","100","50","25"};
       System.out.println( "                             _____\n"
                           +"             ,             /@@@@@=-\n"
                           +"             \\\\            @@@@@@@@@@=-\n"
@@ -615,34 +616,30 @@ public class DarkSouls{
                           +"  /__/               /__/     _/__/\n"
                           +"                             /__/");
 
-      options(firstops);
       
 
-      
-      while (!s.hasNextInt()) {
-         if (s.hasNextLine()) {
-            System.out.println("Invalid input!");
-            s.nextLine();
-         }
-      }
-      
-      if (s.hasNextInt()){
-         choice=s.nextInt();
+      while (true){
+         options(firstops);
+         choice = getinput(4);
          if (choice==1){
            profile=rungame(profile);
-         
          } // new game
          else if (choice==2){
-         
-         
+            continue;
          } // Continue
          else if (choice==3){
-            System.exit(0);
+            break;
          } // Quit
-         System.out.println("Save Here");
-      } // end if
+         
+         else if (choice == 4){
+            System.out.println("Please set the maxhp!");
+            options(secops);
+            int choice2 = getinput(secops.length);
+            maxhp = Integer.parseInt(secops[choice2-1]);
+            continue;
+         } // end else if
+   } //end while
 
-
-
+   System.out.println("Save Here");
    } //end main
 } //end class
