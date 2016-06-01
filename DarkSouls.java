@@ -547,8 +547,9 @@ public class DarkSouls{
       
    public static void Shrine(){ //not implemented
       System.out.println("Save feature not yet implemented, sorry.\nComeback with 100 titanite for a suprise!");
-      if (titante >= 100){Player.setwep(Weapon.legendarysword));}
-      rungame();
+      if (titanite >= 100){player.setwep(Weapon.legendarysword);}
+      int[] profile = new int[6];
+      rungame(profile);
    } // end method
    
    public static int[] rungame(int[] profile){
